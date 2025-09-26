@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>도서 등록 페이지</h1>
+
+<form action="{% url "books:create" %}" method="POST">
+  {% csrf_token %}
+<label for="title">Title : </label>
+<input type="text" name="title" id="title">
+<br>
+<label for="description">Description : </label>
+  <textarea name="description" id="description" cols="30" rows="10"></textarea>
+<br>
+<label for="review_num">rank : </label>
+<input type="text" name="review_num" id="review_num">
+<br>
+<label for="author">author : </label>
+<input type="text" name="author" id="author">
+
+<input type="submit" name="제출">
+
+</form>
+{% endblock content %}

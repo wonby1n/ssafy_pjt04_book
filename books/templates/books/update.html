@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>도서 수정 페이지</h1>
+
+<form action="{% url 'books:update' book.pk %}" method="POST">
+  {% csrf_token %}
+  
+  <label for="title">Title : </label>
+  <input type="text" name="title" id="title" value="{{ book.title }}">
+  <br>
+
+  <label for="description">Description : </label>
+  <textarea name="description" id="description" cols="30" rows="10">{{ book.description }}</textarea>
+  <br>
+
+  <label for="review_num">Rank : </label>
+  <input type="text" name="review_num" id="review_num" value="{{ book.review_num }}">
+  <br>
+
+  <label for="author">Author : </label>
+  <input type="text" name="author" id="author" value="{{ book.author }}">
+  <br>
+
+  <input type="submit" value="제출">
+</form>
+{% endblock content %}

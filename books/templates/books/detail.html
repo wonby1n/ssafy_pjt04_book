@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>도서 상세 페이지</h1>
+<br>
+<h2>{{ book.title }}</h2>
+
+<p>{{ book.description }}</p>
+
+<p>회원 리뷰 평점: {{ book.review_num }}</p>
+<p>{{ book.author }}</p>
+<hr>
+<button type="button" class="btn btn-secondary">
+  <a href="{% url 'books:update' book.pk %}" style="color:white; text-decoration:none;">UPDATE</a>
+</button>
+
+<form action="{% url 'books:delete' book.pk %}" method="POST" style="display:inline;">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">DELETE</button>
+</form>
+
+<hr>
+<a href="{% url 'books:index' %}" class="btn btn-primary">BACK</a>
+{% endblock content %}
+
+
